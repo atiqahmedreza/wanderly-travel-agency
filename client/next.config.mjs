@@ -5,7 +5,9 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL ||
-      (process.env.VERCEL ? PRODUCTION_API : 'http://localhost:5000/api'),
+      (process.env.RENDER || process.env.NODE_ENV === 'production'
+        ? PRODUCTION_API
+        : 'http://localhost:5000/api'),
   },
   images: {
     remotePatterns: [
