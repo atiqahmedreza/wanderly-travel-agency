@@ -6,8 +6,8 @@
 
 | App | URL |
 |-----|-----|
-| Client (Vercel) | _Deploy and add your URL here_ |
-| API Server | _Deploy and add your URL here_ |
+| **Live website (submit this)** | https://wanderly-travel-agency.vercel.app |
+| API (Render) | https://wanderly-travel-agency.onrender.com/api |
 
 ## GitHub repository
 

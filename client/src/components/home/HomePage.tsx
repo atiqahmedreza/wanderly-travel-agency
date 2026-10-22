@@ -47,10 +47,11 @@ export function HomePage() {
         api.get('/reviews/testimonials'),
         api.get('/blog/latest'),
       ]);
+      const failures: string[] = [];
       const pick = <T,>(i: number, setter: (v: T) => void) => {
         const r = results[i];
         if (r.status === 'fulfilled') setter(r.value.data.data);
-        else toast(getErrorMessage(r.reason), 'error');
+        else failures.push(getErrorMessage(r.reason));
       };
       pick(0, setFeatured);
       pick(1, setDestinations);
@@ -59,6 +60,7 @@ export function HomePage() {
       pick(4, setWhyUs);
       pick(5, setTestimonials);
       pick(6, setBlog);
+      if (failures.length) toast(failures[0], 'error');
       setLoading(false);
     })();
   }, [toast]);

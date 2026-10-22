@@ -1,6 +1,10 @@
 import axios, { AxiosError } from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const PRODUCTION_API = 'https://wanderly-travel-agency.onrender.com/api';
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (process.env.NODE_ENV === 'production' ? PRODUCTION_API : 'http://localhost:5000/api');
 
 export const api = axios.create({
   baseURL: API_URL,
