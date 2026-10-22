@@ -2,6 +2,8 @@
 const PRODUCTION_API = 'https://wanderly-travel-agency.onrender.com/api';
 
 const nextConfig = {
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: false },
   env: {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL ||

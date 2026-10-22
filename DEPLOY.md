@@ -32,6 +32,9 @@ Health: `https://wanderly-travel-agency.onrender.com/api/health`
 | Root Directory | `client` |
 | Build | `npm install && npm run build` |
 | Start | `npm start` |
+| **Node version** | `20` (Settings → Environment → `NODE_VERSION=20` if build fails) |
+
+If deploy fails: open **Logs** — common fixes are **Root Directory = `client`** and **Node 20**.
 | Plan | Free |
 
 Env:
