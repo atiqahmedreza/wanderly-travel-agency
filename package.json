@@ -1,0 +1,9 @@
+{
+  "name": "wanderly",
+  "private": true,
+  "description": "Wanderly travel agency — run scripts from project root",
+  "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -File ./scripts/start-local.ps1",
+    "stop": "powershell -ExecutionPolicy Bypass -File ./scripts/stop-dev-ports.ps1"
+  }
+}

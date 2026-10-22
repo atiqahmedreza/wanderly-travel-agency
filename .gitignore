@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# Next.js
+client/.next/
+client/out/
+
+# Logs & OS
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# MongoDB memory server cache
+server/.mongodb/

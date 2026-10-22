@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #f1f5f9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[var(--background)] font-sans text-[var(--foreground)] antialiased;
+}
+
+.font-display {
+  font-family: var(--font-playfair), serif;
+}
+
+@layer utilities {
+  .section-pad {
+    @apply px-4 py-16 sm:px-6 lg:px-8;
+  }
+}
