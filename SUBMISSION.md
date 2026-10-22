@@ -27,4 +27,4 @@ Website: http://localhost:3000 · API: http://localhost:5000/api/health
 
 ## Live deployment
 
-Add your deployed URLs to the table in `README.md` before final submission.
+Follow **[DEPLOY.md](./DEPLOY.md)** (MongoDB Atlas → Render → Vercel), then add URLs to `README.md`.
