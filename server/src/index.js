@@ -30,7 +30,7 @@ app.use(
       }
       try {
         const { hostname } = new URL(origin);
-        if (process.env.NODE_ENV === 'production' && (hostname.endsWith('.vercel.app') || hostname === 'vercel.app')) {
+        if (process.env.NODE_ENV === 'production' && hostname.endsWith('.onrender.com')) {
           return callback(null, true);
         }
       } catch {

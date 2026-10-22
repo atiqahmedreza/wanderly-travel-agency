@@ -19,7 +19,7 @@ export default function AdminSettingsPage() {
       <h1 className="font-display text-3xl font-semibold">Settings</h1>
       <Card className="mt-6 max-w-xl space-y-3 p-6 text-sm text-slate-600 dark:text-slate-300">
         <p>Configure Stripe, imgBB, and MongoDB through server environment variables on your host.</p>
-        <p>Client URL must match your deployed Vercel domain for CORS and Stripe redirect URLs.</p>
+        <p>Client URL must match your deployed website URL (Render) for CORS and Stripe redirect URLs.</p>
         <p>Primary admin: admin@wanderly.com — role changes are locked for this account.</p>
       </Card>
     </DashboardShell>

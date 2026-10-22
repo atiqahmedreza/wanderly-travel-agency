@@ -6,8 +6,8 @@
 
 | App | URL |
 |-----|-----|
-| **Live website (submit this)** | _Your Vercel URL — see [DEPLOY.md](./DEPLOY.md#3-vercel--frontend)_ |
-| API (Render) | https://wanderly-travel-agency.onrender.com/api |
+| **Live website (submit this)** | `https://wanderly-web.onrender.com` _(after [DEPLOY.md](./DEPLOY.md) step 3)_ |
+| **API (Render)** | https://wanderly-travel-agency.onrender.com/api |
 
 ## GitHub repository
 

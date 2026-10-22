@@ -17,14 +17,17 @@
 
 ## Local run (Windows)
 
-From project root:
-
-```powershell
-npm run dev
-```
-
+From project root: `npm run dev`  
 Website: http://localhost:3000 · API: http://localhost:5000/api/health
 
-## Live deployment
+## Live deployment (Render only)
 
-Follow **[DEPLOY.md](./DEPLOY.md)** (MongoDB Atlas → Render → Vercel), then add URLs to `README.md`.
+Deploy guide: **[DEPLOY.md](./DEPLOY.md)**
+
+| | URL |
+|---|-----|
+| **Website (submit)** | `https://wanderly-web.onrender.com` _(create `client` service on Render)_ |
+| **API** | https://wanderly-travel-agency.onrender.com/api |
+| **GitHub** | https://github.com/atiqahmedreza/wanderly-travel-agency |
+
+**Do not submit** any `*.vercel.app` link for this project unless it is a deployment **you** built from this repo (Home / Explore / Blog / Bangladesh packages).
