@@ -77,9 +77,12 @@ You should see `Packages: 9` and demo users created.
 
 ## 3. Vercel — frontend
 
+> **Important:** `https://wanderly-travel-agency.vercel.app` is **not** this repo — it is another project. You must deploy **your** GitHub repo and use **your** Vercel URL (e.g. `wanderly-atiq.vercel.app`).
+
 1. [https://vercel.com](https://vercel.com) → sign in with **GitHub**.
-2. **Add New…** → **Project** → import **`wanderly-travel-agency`**.
-3. **Configure Project**:
+2. **Add New…** → **Project** → import **`atiqahmedreza/wanderly-travel-agency`** (your repo).
+3. **Project Name:** pick a **unique** name, e.g. `wanderly-atiq` or `wanderly-bd-travel` (avoids clashing with other sites).
+4. **Configure Project**:
 
    | Field | Value |
    |-------|--------|
