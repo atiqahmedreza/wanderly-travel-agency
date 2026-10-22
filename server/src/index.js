@@ -28,6 +28,14 @@ app.use(
       if (process.env.NODE_ENV !== 'production' && isLocalDevOrigin(origin)) {
         return callback(null, true);
       }
+      try {
+        const { hostname } = new URL(origin);
+        if (process.env.NODE_ENV === 'production' && (hostname.endsWith('.vercel.app') || hostname === 'vercel.app')) {
+          return callback(null, true);
+        }
+      } catch {
+        /* ignore malformed origin */
+      }
       callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
