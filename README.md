@@ -9,10 +9,16 @@
 | Client (Vercel) | _Deploy and add your URL here_ |
 | API Server | _Deploy and add your URL here_ |
 
-## Repositories
+## GitHub repository
 
-- **Client:** `client/` (Next.js App Router)
-- **Server:** `server/` (Express + MongoDB)
+**https://github.com/atiqahmedreza/wanderly-travel-agency**
+
+| Part | Folder |
+|------|--------|
+| **Frontend source** | [`client/`](./client) — Next.js App Router |
+| **Backend source** | [`server/`](./server) — Express + MongoDB |
+
+See [`SUBMISSION.md`](./SUBMISSION.md) for instructor checklist and demo logins.
 
 ## Demo credentials
 
