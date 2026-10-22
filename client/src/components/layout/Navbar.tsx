@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Compass, Menu, Moon, Sun, X, ChevronDown, LogOut } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useAuth } from '@/contexts/AuthContext';
@@ -28,9 +28,12 @@ const authedLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const { user, loading, logout } = useAuth();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [themeMounted, setThemeMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => setThemeMounted(true), []);
 
   const links = user ? authedLinks : [...publicLinks, { href: '/login', label: 'Login' }];
   const dashHref = user?.role === 'admin' ? '/dashboard/admin' : '/dashboard/user';
@@ -69,10 +72,18 @@ export function Navbar() {
           <button
             type="button"
             className="rounded-xl p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle dark mode"
           >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {themeMounted ? (
+              resolvedTheme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )
+            ) : (
+              <span className="inline-block h-5 w-5" aria-hidden />
+            )}
           </button>
 
           {!loading && !user && (
