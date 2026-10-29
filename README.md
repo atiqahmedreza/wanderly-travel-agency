@@ -6,7 +6,7 @@
 
 | App | URL |
 |-----|-----|
-| **Live website (submit this)** | `https://wanderly-web.onrender.com` _(after [DEPLOY.md](./DEPLOY.md) step 3)_ |
+| **Live website (submit this)** | `(https://wanderly-travel-agency-1.onrender.com/)` |
 | **API (Render)** | https://wanderly-travel-agency.onrender.com/api |
 
 ## GitHub repository
