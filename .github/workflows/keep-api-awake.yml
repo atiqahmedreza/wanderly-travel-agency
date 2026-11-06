@@ -1,20 +1,24 @@
 # Render's free tier sleeps a service after 15 minutes idle, and waking it
-# takes ~45 seconds. A visitor arriving cold sees an app that looks broken.
-# Pinging every 10 minutes keeps the API hot.
+# takes 30-45 seconds. A visitor arriving cold sees an app that looks broken.
 #
-# Only the API is pinged: the client is on Vercel, which does not sleep.
-# One always-on Render service costs ~730 of the 750 free instance-hours a
-# month, so do not add a second ping here without checking that budget.
+# Budget: the free plan allows 750 instance-hours a month ACROSS THE ACCOUNT,
+# and this account also runs the Fable API. A service pinged every 10 minutes
+# stays up for the whole window, so:
+#
+#   24h/day x 31 x 2 services = 1488h  -> blows the quota, services suspended
+#   10h/day x 31 x 2 services =  620h  -> fits, with ~130h to spare
+#
+# Hence the window rather than round-the-clock. Outside it the API sleeps and
+# the first visitor pays the cold start; run this workflow manually from the
+# Actions tab before sending an application to warm it on demand.
 name: Keep API awake
 
 on:
   schedule:
-    # Every 10 minutes. GitHub may delay scheduled runs under load, which is
-    # fine here — a late ping still beats a cold start.
-    - cron: "*/10 * * * *"
+    # Every 10 minutes, 04:00-13:59 UTC = 10:00-19:59 Bangladesh (UTC+6).
+    - cron: "*/10 4-13 * * *"
   workflow_dispatch:
 
-# Never let a slow wake-up pile up into overlapping runs.
 concurrency:
   group: keep-api-awake
   cancel-in-progress: true
