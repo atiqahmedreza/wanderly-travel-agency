@@ -6,8 +6,7 @@
 
 | App | URL |
 |-----|-----|
-| **Live website (submit this)** | `(https://wanderly-travel-agency-1.onrender.com/)` |
-| **API (Render)** | https://wanderly-travel-agency.onrender.com/api |
+| **Live website : https://wanderly-travel-agency-1.onrender.com/
 
 ## GitHub repository
 
