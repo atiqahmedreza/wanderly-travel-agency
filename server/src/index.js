@@ -11,8 +11,23 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CLIENT_URL may hold several comma-separated origins, so a second front end
+// can be added without a code change. EXTRA_CLIENT_URLS does the same, kept
+// separate so CLIENT_URL stays the single canonical origin used for Stripe
+// redirects in bookingController.
+const splitOrigins = (value) =>
+  (value || '')
+    .split(',')
+    .map((entry) => entry.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  ...splitOrigins(process.env.CLIENT_URL),
+  ...splitOrigins(process.env.EXTRA_CLIENT_URLS),
+  // The Vercel-hosted client. Render's web service sleeps after 15 minutes
+  // idle and takes ~45s to wake, and the free tier has only enough
+  // instance-hours to keep one service warm, which is the API.
+  'https://wanderly-travel-agency-drab.vercel.app',
   'http://localhost:3000',
   'http://127.0.0.1:3000',
 ].filter(Boolean);
@@ -36,7 +51,9 @@ app.use(
       } catch {
         /* ignore malformed origin */
       }
-      callback(new Error('Not allowed by CORS'));
+      // Refuse without throwing: throwing here surfaces as a 500, which makes
+      // a blocked origin look like the API is broken.
+      callback(null, false);
     },
     credentials: true,
   })
