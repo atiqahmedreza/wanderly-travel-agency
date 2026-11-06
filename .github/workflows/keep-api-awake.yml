@@ -1,0 +1,40 @@
+# Render's free tier sleeps a service after 15 minutes idle, and waking it
+# takes ~45 seconds. A visitor arriving cold sees an app that looks broken.
+# Pinging every 10 minutes keeps the API hot.
+#
+# Only the API is pinged: the client is on Vercel, which does not sleep.
+# One always-on Render service costs ~730 of the 750 free instance-hours a
+# month, so do not add a second ping here without checking that budget.
+name: Keep API awake
+
+on:
+  schedule:
+    # Every 10 minutes. GitHub may delay scheduled runs under load, which is
+    # fine here — a late ping still beats a cold start.
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+# Never let a slow wake-up pile up into overlapping runs.
+concurrency:
+  group: keep-api-awake
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Ping the API until it answers
+        run: |
+          URL="https://wanderly-travel-agency.onrender.com/api/packages"
+          for attempt in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 120 "$URL" || echo "000")
+            echo "attempt $attempt -> HTTP $code"
+            if [ "$code" = "200" ]; then
+              echo "API is awake."
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::API did not return 200 after 3 attempts — it may be down."
+          exit 1

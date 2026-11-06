@@ -6,7 +6,17 @@
 
 | App | URL |
 |-----|-----|
-| **Live website : https://wanderly-travel-agency-1.onrender.com/
+| **Live website** | https://wanderly-travel-agency-drab.vercel.app |
+| **API** | https://wanderly-travel-agency.onrender.com/api |
+| Alternate web host | https://wanderly-travel-agency-1.onrender.com |
+
+The client is served from Vercel because the Render web service sleeps after
+15 minutes idle and takes ~45s to wake. The API still runs on Render, so the
+first request after an idle period can be slow; a scheduled workflow keeps it
+warm (see `.github/workflows/keep-api-awake.yml`).
+
+Note: `wanderly-travel-agency.vercel.app` (without the suffix) is an unrelated
+site owned by someone else. Use the URL above.
 
 ## GitHub repository
 

@@ -1,6 +1,6 @@
 # Deploy Wanderly (Render only)
 
-This project is **not** hosted on Vercel. The public URL `wanderly-travel-agency.vercel.app` belongs to **another** website — do not use it.
+The client **is** hosted on Vercel at `wanderly-travel-agency-drab.vercel.app`, and the API on Render. Note that `wanderly-travel-agency.vercel.app` (without the suffix) belongs to **another** website — do not use it.
 
 Host **API** and **website** on [Render](https://render.com) from your GitHub repo.
 
